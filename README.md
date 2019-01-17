@@ -3,10 +3,10 @@
 SSD is an unified framework for object detection with a single network. It has been originally introduced in this research [article](http://arxiv.org/abs/1512.02325).
 
 This repository contains a TensorFlow re-implementation of the original [Caffe code](https://github.com/weiliu89/caffe/tree/ssd). At present, it only implements VGG-based SSD networks (with 300 and 512 inputs), but the architecture of the project is modular, and should make easy the implementation and training of other SSD variants (ResNet or Inception based for instance). Present TF checkpoints have been directly converted from SSD Caffe models.
-    >이 리포지토리에는 원래 Caffe 코드의 TensorFlow 재실행 기능이 있습니다. 현재 VGG 기반 SSD 네트워크(입력 300 및 512개)만 구현하고 있지만, 프로젝트의 아키텍처는 모듈식이므로 다른 SSD 변종(예: ResNet 또는 Inception 기반)의 구현과 교육을 용이하게 해야 합니다. 현재 TF 체크포인트는 SSD Caffe 모델에서 직접 변환되었습니다.
+>이 리포지토리에는 원래 Caffe 코드의 TensorFlow 재실행 기능이 있습니다. 현재 VGG 기반 SSD 네트워크(입력 300 및 512개)만 구현하고 있지만, 프로젝트의 아키텍처는 모듈식이므로 다른 SSD 변종(예: ResNet 또는 Inception 기반)의 구현과 교육을 용이하게 해야 합니다. 현재 TF 체크포인트는 SSD Caffe 모델에서 직접 변환되었습니다.
 
 The organisation is inspired by the TF-Slim models repository containing the implementation of popular architectures (ResNet, Inception and VGG). Hence, it is separated in three main parts:
-    >조직은 인기 있는 아키텍처(ResNet, Inception 및 VGG)의 구현을 포함하는 TF-Slim 모델 저장소에서 영감을 얻습니다. 따라서 세 가지 주요 부분으로 구분됩니다.
+>조직은 인기 있는 아키텍처(ResNet, Inception 및 VGG)의 구현을 포함하는 TF-Slim 모델 저장소에서 영감을 얻습니다. 따라서 세 가지 주요 부분으로 구분됩니다.
 
 * datasets: interface to popular datasets (Pascal VOC, COCO, ...) and scripts to convert the former to TF-Records;
 * networks: definition of SSD networks, and common encoding and decoding methods (we refer to the paper on this precise topic);
@@ -17,9 +17,9 @@ The organisation is inspired by the TF-Slim models repository containing the imp
 The [SSD Notebook](notebooks/ssd_notebook.ipynb) contains a minimal example of the SSD TensorFlow pipeline. Shortly, the detection is made of two main steps: running the SSD network on the image and post-processing the output using common algorithms (top-k filtering and Non-Maximum Suppression algorithm).
 
 Here are two examples of successful detection outputs:
-    >SSD 노트북에는 SSD TensorFlow 파이프라인의 최소 예가 포함되어 있습니다. 곧 검출은 이미지에서 SSD 네트워크를 실행하고 공통 알고리즘(top-k 필터링 및 Non-Maximum Suppressment 알고리즘)을 사용하여 출력을 후 처리한다는 두 가지 주요 단계로 이루어집니다.
+>SSD 노트북에는 SSD TensorFlow 파이프라인의 최소 예가 포함되어 있습니다. 곧 검출은 이미지에서 SSD 네트워크를 실행하고 공통 알고리즘(top-k 필터링 및 Non-Maximum Suppressment 알고리즘)을 사용하여 출력을 후 처리한다는 두 가지 주요 단계로 이루어집니다.
 
-    >다음은 성공적인 감지 출력의 두 가지 예입니다.
+>다음은 성공적인 감지 출력의 두 가지 예입니다.
 ![](pictures/ex1.png "SSD anchors")
 ![](pictures/ex2.png "SSD anchors")
 
@@ -36,7 +36,7 @@ jupyter notebook notebooks/ssd_notebook.ipynb
 ## Datasets
 
 The current version only supports Pascal VOC datasets (2007 and 2012). In order to be used for training a SSD model, the former need to be converted to TF-Records using the `tf_convert_data.py` script:
-    >현재 버전은 Pascal VOC 데이터 세트만 지원합니다(2007 및 2012). SSD 모델을 교육하는 데 사용하려면 tf_convert_data.py 스크립트를 사용하여 전자를 TF-Records로 변환해야 합니다.
+>현재 버전은 Pascal VOC 데이터 세트만 지원합니다(2007 및 2012). SSD 모델을 교육하는 데 사용하려면 tf_convert_data.py 스크립트를 사용하여 전자를 TF-Records로 변환해야 합니다.
 
 ```bash
 DATASET_DIR=./VOC2007/test/
