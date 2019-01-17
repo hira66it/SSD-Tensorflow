@@ -10,17 +10,21 @@ The organisation is inspired by the TF-Slim models repository containing the imp
 >조직은 인기 있는 아키텍처(ResNet, Inception 및 VGG)의 구현을 포함하는 TF-Slim 모델 저장소에서 영감을 얻습니다. 따라서 세 가지 주요 부분으로 구분됩니다.
 
 * datasets: interface to popular datasets (Pascal VOC, COCO, ...) and scripts to convert the former to TF-Records;
+* 데이터셋: 널리 사용되는 데이터셋(Pascal VOC, COCO 등) 및 스크립트에 대한 인터페이스를 통해 전자를 TF-Record로 변환합니다.
 * networks: definition of SSD networks, and common encoding and decoding methods (we refer to the paper on this precise topic);
+* 네트워크: SSD 네트워크의 정의, 일반적인 인코딩 및 디코딩 방법(이 정확한 항목에 대한 문서를 참조)입니다.
 * pre-processing: pre-processing and data augmentation routines, inspired by original VGG and Inception implementations.
-
+* 사전 처리: 기존 VGG 및 Inception 구현에서 영감을 받은 사전 처리 및 데이터 확장 루틴입니다.
 ## SSD minimal example
 
 The [SSD Notebook](notebooks/ssd_notebook.ipynb) contains a minimal example of the SSD TensorFlow pipeline. Shortly, the detection is made of two main steps: running the SSD network on the image and post-processing the output using common algorithms (top-k filtering and Non-Maximum Suppression algorithm).
 
 Here are two examples of successful detection outputs:
+
 >SSD 노트북에는 SSD TensorFlow 파이프라인의 최소 예가 포함되어 있습니다. 곧 검출은 이미지에서 SSD 네트워크를 실행하고 공통 알고리즘(top-k 필터링 및 Non-Maximum Suppressment 알고리즘)을 사용하여 출력을 후 처리한다는 두 가지 주요 단계로 이루어집니다.
 
 >다음은 성공적인 감지 출력의 두 가지 예입니다.
+
 ![](pictures/ex1.png "SSD anchors")
 ![](pictures/ex2.png "SSD anchors")
 
@@ -37,6 +41,7 @@ jupyter notebook notebooks/ssd_notebook.ipynb
 ## Datasets
 
 The current version only supports Pascal VOC datasets (2007 and 2012). In order to be used for training a SSD model, the former need to be converted to TF-Records using the `tf_convert_data.py` script:
+
 >현재 버전은 Pascal VOC 데이터 세트만 지원합니다(2007 및 2012). SSD 모델을 교육하는 데 사용하려면 tf_convert_data.py 스크립트를 사용하여 전자를 TF-Records로 변환해야 합니다.
 
 ```bash
@@ -139,7 +144,9 @@ python eval_ssd_network.py \
 ### Fine-tuning a network trained on ImageNet
 
 One can also try to build a new SSD model based on standard architecture (VGG, ResNet, Inception, ...) and set up on top of it the `multibox` layers (with specific anchors, ratios, ...). For that purpose, you can fine-tune a network by only loading the weights of the original architecture, and initialize randomly the rest of network. For instance, in the case of the [VGG-16 architecture](http://download.tensorflow.org/models/vgg_16_2016_08_28.tar.gz), one can train a new model as following:
+
 >또한 표준 아키텍처(VGG, ResNet, Inception 등)를 기반으로 새로운 SSD 모델을 구축하고 멀티박스 계층(특정 앵커, 비율 등)을 그 위에 설정할 수 있습니다. 이를 위해 원래 아키텍처의 가중치만 로드하여 네트워크를 미세 조정하고 나머지 네트워크를 임의로 초기화할 수 있습니다. 예를 들어 VGG-16 아키텍처의 경우 다음과 같이 새 모델을 교육할 수 있습니다.
+
 ```bash
 DATASET_DIR=./tfrecords
 TRAIN_DIR=./log/
@@ -163,7 +170,9 @@ python train_ssd_network.py \
     --batch_size=32
 ```
 Hence, in the former command, the training script randomly initializes the weights belonging to the `checkpoint_exclude_scopes` and load from the checkpoint file `vgg_16.ckpt` the remaining part of the network. Note that we also specify with the `trainable_scopes` parameter to first only train the new SSD components and left the rest of VGG network unchanged. Once the network has converged to a good first result (~0.5 mAP for instance), you can fine-tuned the complete network as following:
+
 >따라서 이전 명령에서 교육 스크립트는 checkpoint_excope에 속한 가중치를 임의로 초기화하고 네트워크의 나머지 부분 vg_16.ckpt에서 로드합니다. 또한 Trainable_scopes 매개 변수를 지정하여 먼저 새 SSD 구성 요소만 교육하고 나머지 VGG 네트워크를 변경하지 않도록 합니다. 네트워크가 양호한 첫 번째 결과(예: ~0.5mAP)로 수렴되면 다음과 같이 전체 네트워크를 미세 조정할 수 있습니다.
+
 ```bash
 DATASET_DIR=./tfrecords
 TRAIN_DIR=./log_finetune/
