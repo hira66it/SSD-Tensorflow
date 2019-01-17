@@ -117,8 +117,11 @@ python train_ssd_network.py \
 ```
 Note that in addition to the training script flags, one may also want to experiment with data augmentation parameters (random cropping, resolution, ...) in `ssd_vgg_preprocessing.py` or/and network parameters (feature layers, anchors boxes, ...) in `ssd_vgg_300/512.py`
 >교육 스크립트 플래그 외에도 ssd_vgg_preprocessing.py의 데이터 증가 매개 변수(랜덤 자르기, 해상도 등)와 ssd_vgg_300/512.py의 네트워크 매개 변수(기능 계층, 앵커 상자 등)를 사용하여 테스트할 수도 있습니다.
+
 Furthermore, the training script can be combined with the evaluation routine in order to monitor the performance of saved checkpoints on a validation dataset. For that purpose, one can pass to training and validation scripts a GPU memory upper limit such that both can run in parallel on the same device. If some GPU memory is available for the evaluation script, the former can be run in parallel as follows:
->위해 저장된 검문소의 밸리데이션의 데이터에 성과를 모니터링하는데 게다가, 훈련 대본은 평가 일정과 결합할 수 있습니다. 그 목적, 한 훈련과 유효에 GPU메모리 상한 둘 다 동시에 동일한 장치로 달릴 수 있는 통과할 수 있다. 만약 어떤 GPU메모리 계산 스크립트에서 사용할 수 있습니다 다음과 같이 전 동시에:운영될 수 있다.
+
+>또한 교육 스크립트를 평가 루틴과 결합하여 검증 데이터 세트에 저장된 체크포인트의 성능을 모니터링할 수 있습니다. 이를 위해 교육 및 검증 스크립트에 GPU 메모리 상한을 전달하여 두 메모리 모두 동일한 장치에서 병렬로 실행할 수 있습니다. 평가 스크립트에 일부 GPU 메모리를 사용할 수 있는 경우 다음과 같이 전자를 병렬로 실행할 수 있습니다.
+
 ```bash
 EVAL_DIR=${TRAIN_DIR}/eval
 python eval_ssd_network.py \
