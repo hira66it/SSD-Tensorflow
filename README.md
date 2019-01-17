@@ -3,11 +3,14 @@
 SSD is an unified framework for object detection with a single network. It has been originally introduced in this research [article](http://arxiv.org/abs/1512.02325).
 
 This repository contains a TensorFlow re-implementation of the original [Caffe code](https://github.com/weiliu89/caffe/tree/ssd). At present, it only implements VGG-based SSD networks (with 300 and 512 inputs), but the architecture of the project is modular, and should make easy the implementation and training of other SSD variants (ResNet or Inception based for instance). Present TF checkpoints have been directly converted from SSD Caffe models.
-'''이 리포지토리에는 원래 Caffe 코드의 TensorFlow 재실행 기능이 있습니다. 현재 VGG 기반 SSD 네트워크(입력 300 및 512개)만 구현하고 있지만, 프로젝트의 아키텍처는 모듈식이므로 다른 SSD 변종(예: ResNet 또는 Inception 기반)의 구현과 교육을 용이하게 해야 합니다. 현재 TF 체크포인트는 SSD Caffe 모델에서 직접 변환되었습니다.'''
+'''
+이 리포지토리에는 원래 Caffe 코드의 TensorFlow 재실행 기능이 있습니다. 현재 VGG 기반 SSD 네트워크(입력 300 및 512개)만 구현하고 있지만, 프로젝트의 아키텍처는 모듈식이므로 다른 SSD 변종(예: ResNet 또는 Inception 기반)의 구현과 교육을 용이하게 해야 합니다. 현재 TF 체크포인트는 SSD Caffe 모델에서 직접 변환되었습니다.
+'''
 
 The organisation is inspired by the TF-Slim models repository containing the implementation of popular architectures (ResNet, Inception and VGG). Hence, it is separated in three main parts:
->조직은 인기 있는 아키텍처(ResNet, Inception 및 VGG)의 구현을 포함하는 TF-Slim 모델 저장소에서 영감을 얻습니다. 따라서 세 가지 주요 부분으로 구분됩니다.
-
+'''
+    조직은 인기 있는 아키텍처(ResNet, Inception 및 VGG)의 구현을 포함하는 TF-Slim 모델 저장소에서 영감을 얻습니다. 따라서 세 가지 주요 부분으로 구분됩니다.
+'''
 * datasets: interface to popular datasets (Pascal VOC, COCO, ...) and scripts to convert the former to TF-Records;
 * networks: definition of SSD networks, and common encoding and decoding methods (we refer to the paper on this precise topic);
 * pre-processing: pre-processing and data augmentation routines, inspired by original VGG and Inception implementations.
